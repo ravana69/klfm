@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala FM Stream</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .radio-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 10px;
+            width: 300px;
+            background-color: #292929;
+        }
+
+        .radio-image {
+            width: 100%;
+            height: auto;
+        }
+
+        audio {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Kerala FM Stream</h1>
+
+    <div class="radio-card" id="akashvaniDevikulam">
+        <h2>Akashvani Devikulam</h2>
+        <img class="radio-image" src="https://airdco.pc.cdn.bitgravity.com/images/RADIO_996461.jpg" alt="Akashvani Devikulam">
+        <audio controls crossorigin="anonymous" id="audioPlayer1"></audio>
+    </div>
+
+    <div class="radio-card" id="akashvaniKannur">
+        <h2>Akashvani Kannur</h2>
+        <img class="radio-image" src="https://airdco.pc.cdn.bitgravity.com/images/airkannur.jpg" alt="Akashvani Kannur">
+        <audio controls crossorigin="anonymous" id="audioPlayer2"></audio>
+    </div>
+
+    <div class="radio-card" id="akashvaniKochi">
+        <h2>Akashvani Kochi</h2>
+        <img class="radio-image" src="https://airdco.pc.cdn.bitgravity.com/images/airkochi.jpg" alt="Akashvani Kochi">
+        <audio controls crossorigin="anonymous" id="audioPlayer3"></audio>
+    </div>
+
+    <div class="radio-card" id="akashvaniCalicut">
+        <h2>Akashvani Calicut</h2>
+        <img class="radio-image" src="https://airdco.pc.cdn.bitgravity.com/images/aircalicut.jpg" alt="Akashvani Calicut">
+        <audio controls crossorigin="anonymous" id="audioPlayer4"></audio>
+    </div>
+
+    <div class="radio-card" id="akashvaniKozhikodeRealFM">
+        <h2>Akashvani Kozhikode Real FM</h2>
+        <img class="radio-image" src="https://airdco.pc.cdn.bitgravity.com/images/airkozhikoderealfm.jpg" alt="Akashvani Kozhikode Real FM">
+        <audio controls crossorigin="anonymous" id="audioPlayer5"></audio>
+    </div>
+
+    <div class="radio-card" id="akashvaniManjeri">
+        <h2>Akashvani Manjeri</h2>
+        <img class="radio-image" src="https://airdco.pc.cdn.bitgravity.com/images/airmanjeri.jpg" alt="Akashvani Manjeri">
+        <audio controls crossorigin="anonymous" id="audioPlayer6"></audio>
+    </div>
+
+    <div class="radio-card" id="akashvaniTrissur">
+        <h2>Akashvani Trissur</h2>
+        <img class="radio-image" src="https://airdco.pc.cdn.bitgravity.com/images/airthrissur.jpg" alt="Akashvani Trissur">
+        <audio controls crossorigin="anonymous" id="audioPlayer7"></audio>
+    </div>
+
+    <div class="radio-card" id="vbMalayalam">
+        <h2>VB MALAYALAM</h2>
+        <img class="radio-image" src="https://airdco.pc.cdn.bitgravity.com/images/fmananthapuri.jpg" alt="VB MALAYALAM">
+        <audio controls crossorigin="anonymous" id="audioPlayer8"></audio>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            initializeAudio('akashvaniDevikulam', 'https://air.pc.cdn.bitgravity.com/air/live/pbaudio214/playlist.m3u8');
+            initializeAudio('akashvaniKannur', 'https://air.pc.cdn.bitgravity.com/air/live/pbaudio173/playlist.m3u8');
+            initializeAudio('akashvaniKochi', 'https://air.pc.cdn.bitgravity.com/air/live/pbaudio045/playlist.m3u8');
+            initializeAudio('akashvaniCalicut', 'https://air.pc.cdn.bitgravity.com/air/live/pbaudio082/playlist.m3u8');
+            initializeAudio('akashvaniKozhikodeRealFM', 'https://air.pc.cdn.bitgravity.com/air/live/pbaudio083/playlist.m3u8');
+            initializeAudio('akashvaniManjeri', 'https://air.pc.cdn.bitgravity.com/air/live/pbaudio101/playlist.m3u8');
+            initializeAudio('akashvaniTrissur', 'https://air.pc.cdn.bitgravity.com/air/live/pbaudio036/playlist.m3u8');
+            initializeAudio('vbMalayalam', 'https://air.pc.cdn.bitgravity.com/air/live/pbaudio299/playlist.m3u8');
+
+            // Add more calls to initializeAudio for additional radio stations
+        });
+
+        function initializeAudio(cardId, sourceUrl) {
+            var audio = document.getElementById(cardId).querySelector('audio');
+            if(Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(sourceUrl);
+                hls.attachMedia(audio);
+            }
+            else if (audio.canPlayType('application/vnd.apple.mpegurl')) {
+                audio.src = sourceUrl;
+            }
+        }
+    </script>
+
+</body>
+</html>
